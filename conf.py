@@ -1,7 +1,7 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*- 
 #
-# CloudDoc documentation build configuration file, created by
-# sphinx-quickstart on Fri Jan 25 10:33:05 2019.
+# 菊风云通讯平台 documentation build configuration file, created by
+# sphinx-quickstart on Sat Sep 16 21:38:51 2017.
 #
 # This file is execfile()d with the current directory set to its
 # containing dir.
@@ -16,10 +16,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
-
+#import os
+ #import sys
+#sys.path.insert(0, os.path.abspath('.'))
 
 # -- General configuration ------------------------------------------------
 
@@ -30,9 +29,11 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.coverage',
-    'sphinx.ext.imgmath']
+
+extensions = [
+  'sphinx.ext.autodoc',
+  'rst2pdf.pdfbuilder'
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -47,9 +48,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'CloudDoc'
-copyright = u'2019, colorY'
-author = u'colorY'
+project = u'菊风云通讯平台'
+copyright = u'2018, 菊风'
+author = u'菊风'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -70,7 +71,9 @@ language = 'zh_CN'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = [
+    #'rst2pdf.pdfbuilder'
+]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -78,19 +81,148 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+# -- Options for manual page output ---------------------------------------
+
+# One entry per manual page. List of tuples
+# (source start file, name, description, authors, manual section).
+man_pages = [
+    (master_doc, 'sdk', u'菊风公有云SDK Documentation',
+     [author], 1)
+]
+
+
+# -- Options for Texinfo output -------------------------------------------
+
+# Grouping the document tree into Texinfo files. List of tuples
+# (source start file, target name, title, author,
+#  dir menu entry, description, category)
+texinfo_documents = [
+    (master_doc, 'SDK', u'菊风公有云SDK Documentation',
+     author, 'SDK', 'One line description of project.',
+     'Miscellaneous'),
+]
+
+
+# -- Options for PDF output --------------------------------------------------
+ 
+# Grouping the document tree into PDF files. List of tuples
+# (source start file, target name, title, author, options).
+#
+# If there is more than one author, separate them with \\.
+# For example: r'Guido van Rossum\\Fred L. Drake, Jr., editor'
+#
+# The options element is a dictionary that lets you override
+# this config per-document.
+# index - master document
+# rst2pdf - name of the generated pdf
+# Sample rst2pdf doc - title of the pdf
+# Your Name - author name in the pdf
+pdf_documents = [('index', u'juphoonpdf', u'菊风云通讯文档', u'菊风'),]
+# For example,
+# ('index', u'MyProject', u'My Project', u'Author Name',
+#  dict(pdf_compressed = True))
+# would mean that specific document would be compressed
+# regardless of the global pdf_compressed setting.
+ 
+#pdf_documents = [
+ #   ('index', u'HanLP Handbook', u'HanLP Handbook', u'hankcs'),
+#]
+ 
+# A comma-separated list of custom stylesheets. Example:
+pdf_stylesheets = ['a4','zh_cn']
+#pdf_stylesheets = [’a4‘,‘chinese’]
+ 
+# Create a compressed PDF
+# Use True/False or 1/0
+# Example: compressed=True
+#pdf_compressed = False
+ 
+# A colon-separated list of folders to search for fonts. Example:
+#pdf_font_path = ['\Library\Fonts']
+pdf_font_path = ['/Library/Python/2.7/site-packages/rst2pdf-0.93.dev_r0-py2.7.egg/rst2pdf/fonts/']
+ 
+# Language to be used for hyphenation support
+pdf_language = "zh_cn"
+ 
+# Mode for literal blocks wider than the frame. Can be
+# overflow, shrink or truncate
+pdf_fit_mode = "shrink"
+ 
+# Section level that forces a break page.
+# For example: 1 means top-level sections start in a new page
+# 0 means disabled
+#pdf_break_level = 0
+ 
+# When a section starts in a new page, force it to be 'even', 'odd',
+# or just use 'any'
+#pdf_breakside = 'any'
+ 
+# Insert footnotes where they are defined instead of
+# at the end.
+#pdf_inline_footnotes = True
+ 
+# verbosity level. 0 1 or 2
+#pdf_verbosity = 0
+ 
+# If false, no index is generated.
+pdf_use_index = True
+ 
+# If false, no modindex is generated.
+#pdf_use_modindex = True
+ 
+# If false, no coverpage is generated.
+pdf_use_coverpage = True
+ 
+# Documents to append as an appendix to all manuals.
+#pdf_appendices = []
+ 
+# Enable experimental feature to split table cells. Use it
+# if you get "DelayedTable too big" errors
+pdf_splittables = False
+
+# Set the default DPI for images
+#pdf_default_dpi = 72
+ 
+# Enable rst2pdf extension modules (default is only vectorpdf)
+# you need vectorpdf if you want to use sphinx's graphviz support
+pdf_extensions = ['vectorpdf']
+ 
+# Page template name for "regular" pages
+#pdf_page_template = 'cutePage'
+ 
+# Show Table Of Contents at the beginning?
+pdf_use_toc = True
+ 
+# How many levels deep should the table of contents be?
+pdf_toc_depth = 8
+ 
+# Add section number to section references
+pdf_use_numbered_links = False
+ 
+# Background images fitting mode
+pdf_fit_background_mode = 'scale'
+
 
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+#html_theme = 'alabaster'
+#html_theme = "dotted"
 html_theme = 'sphinx_rtd_theme'
+#html_theme = "t3SphinxThemeRtd"
+#html_theme = 'agogo'
+#html_theme = 'haiku'
+#html_theme = 'nature'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+#html_theme_options = {}
+#html_theme_path = ["JuphoonCloud", ]
+#html_theme_path = [t3SphinxThemeRtd.get_html_theme_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -109,106 +241,173 @@ html_sidebars = {
         'relations.html',  # needs 'show_related': True theme option to display
         'searchbox.html',
         'donate.html',
-    ]
+   ]
 }
 
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'CloudDocdoc'
+htmlhelp_basename = 'SDKdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
+import os
 
-latex_elements = {
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
+if on_rtd:
+    latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
+    #'papersize': 'letterpaper',
 
     # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
+    #'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
+    #latex_preamble = '\usepackage{tex-live-zh-cn}'
 
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
-# The paper size ('letterpaper' or 'a4paper').
 'papersize': 'a4paper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '12pt',
-
-'classoptions': ',english',
-'inputenc': '',
-'utf8extra': '',
-
-# Additional stuff for the LaTeX preamble.
 'preamble': '''
-    \usepackage{xeCJK}
-    \usepackage{indentfirst}
-    \setlength{\parindent}{2em}
-    \setCJKmainfont[BoldFont=SimHei, ItalicFont=STKaiti]{SimSun}
-    \setCJKmonofont[Scale=0.9]{Consolas}
-    \setCJKfamilyfont{song}[BoldFont=SimSun]{SimSun}
-    \setCJKfamilyfont{sf}[BoldFont=SimSun]{SimSun}
-    '''
-}
+\hypersetup{unicode=true}
+\usepackage{CJKutf8}
+\DeclareUnicodeCharacter{00A0}{\\nobreakspace}
+\DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+\DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+\DeclareUnicodeCharacter{2713}{x}
+\DeclareUnicodeCharacter{27FA}{\ensuremath{\Longleftrightarrow}}
+\DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{}}}
+\DeclareUnicodeCharacter{221B}{\ensuremath{\sqrt[3]{}}}
+\DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
+\DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
+\usepackage[UTF8, scheme = plain]{ctex}
+\\begin{CJK}{UTF8}{gbsn}
+\AtEndDocument{\end{CJK}}
+'''
+    }
+else:
+    latex_elements = {
+        # 'papersize' : 'a4paper',
+        # 'utf8extra' : '',
+        # 'inputenc'  : '',
+        # 'babel'     : r'''\usepackage[tex-live-zh-cn]{babel}''',
+        # 'preamble' : r'''
+        # \usepackage{ctex}
+        # ''',
+    'papersize': 'a4paper',
+    'preamble': r'''  
+    \hypersetup{unicode=true}
+    \usepackage{CJKutf8}
+    \DeclareUnicodeCharacter{00A0}{\nobreakspace}
+    \DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+    \DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}
+    \DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+    \DeclareUnicodeCharacter{2713}{x}
+    \DeclareUnicodeCharacter{27FA}{\ensuremath{\Longleftrightarrow}}
+    \DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{}}}
+    \DeclareUnicodeCharacter{221B}{\ensuremath{\sqrt[3]{}}}
+    \DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
+    \DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
+    \begin{CJK}{UTF8}{gbsn}
+    \AtEndDocument{\end{CJK}}
+    
+    ''',
+    }
+
+#f = open('latex-styling.tex', 'r+');
+#PREAMBLE = f.read();
+
+parsedliteralwraps = True
+
+latex_additional_files = ['latexmkjarc']
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'CloudDoc.tex', u'CloudDoc Documentation',
-     u'colorY', 'manual'),
+    (master_doc, 'SDK.tex', u'菊风云通讯平台 Documentation',
+     u'菊风', 'manual'),
 ]
 
+class Foo:
+    
+    """Docstring for class Foo.
 
-# -- Options for manual page output ---------------------------------------
+    This text tests for the formatting of docstrings generated from output
+    ``sphinx.ext.autodoc``. Which contain reST, but sphinx nests it in the
+    ``<dl>``, and ``<dt>`` tags. Also, ``<tt>`` is used for class, method names
+    and etc, but those will *always* have the ``.descname`` or
+    ``.descclassname`` class.
 
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'clouddoc', u'CloudDoc Documentation',
-     [author], 1)
-]
+    Normal ``<tt>`` (like the <tt> I just wrote here) needs to be shown with
+    the same style as anything else with ````this type of markup````.
+
+    It's common for programmers to give a code example inside of their
+    docstring::
+
+        from test_py_module import Foo
+
+        myclass = Foo()
+        myclass.dothismethod('with this argument')
+        myclass.flush()
+
+        print(myclass)
 
 
-# -- Options for Texinfo output -------------------------------------------
+    Here is a link to :py:meth:`capitalize`.
+    Here is a link to :py:meth:`__init__`.
+
+    """
+
+    #: Doc comment for class attribute Foo.bar.
+    #: It can have multiple lines.
+    bar = 1
+
+    flox = 1.5   #: Doc comment for Foo.flox. One line only.
+
+
+def setup(app):
+    app.add_stylesheet('custom.css')
+    app.add_javascript("custom.js")
+    app.add_javascript("https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js")
+
+
+# The name of an image file (relative to this directory) to place at the top of
+# the title page.
+#latex_logo = None
+
+# For "manual" documents, if this is true, then toplevel headings are parts,
+# not chapters.
+latex_use_parts = False
+
+# If true, show page references after internal links.
+#latex_show_pagerefs = False
+
+# If true, show URL addresses after external links.
+#latex_show_urls = False
+
+# Documents to append as an appendix to all manuals.
+#latex_appendices = []
+
+# If false, no module index is generated.
+latex_domain_indices = True
+
+# -- Options for Texinfo output ------------------------------------------------
 
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'CloudDoc', u'CloudDoc Documentation',
-     author, 'CloudDoc', 'One line description of project.',
-     'Miscellaneous'),
+  ('index', 'JuliaLanguage', u'Julia 文档',
+   'juphoon', 'JuliaLanguage', 'One line description of project.',
+   'Miscellaneous'),
 ]
 
+# Documents to append as an appendix to all manuals.
+#texinfo_appendices = []
 
+# If false, no module index is generated.
+#texinfo_domain_indices = True
 
-# -- Options for Epub output ----------------------------------------------
-
-# Bibliographic Dublin Core info.
-epub_title = project
-epub_author = author
-epub_publisher = author
-epub_copyright = copyright
-
-# The unique identifier of the text. This can be a ISBN number
-# or the project homepage.
-#
-# epub_identifier = ''
-
-# A unique identification for the text.
-#
-# epub_uid = ''
-
-# A list of files that should not be packed into the epub file.
-epub_exclude_files = ['search.html']
-
-
+# How to display URL addresses: 'footnote', 'no', or 'inline'.
+#texinfo_show_urls = 'footnote'
