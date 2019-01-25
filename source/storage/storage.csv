@@ -1,0 +1,8 @@
+属性,说明
+String fileId,文件唯一标识符
+String uri,文件链接，上传文件可获得
+String path,文件本地路径，发送时表明发送文件路径，接收时表明文件下载保存路径
+int direction,上传还是下载，参见 JCStorageDirection
+int state,传输状态，参见 JCStorageState
+int reason,原因值，当文件状态未 JCStorageStateFail 时有效，参见 JCStorageReason
+int progress,文件传输进度

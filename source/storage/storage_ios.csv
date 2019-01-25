@@ -1,0 +1,10 @@
+属性,说明
+"NSString* fileId",文件唯一标识符
+"NSString* uri",文件链接，上传文件可获得
+"NSString* path",文件本地路径，发送时表明发送文件路径，接收时表明文件下载保存路径
+"JCStorageItemDirection direction",上传还是下载，参见 JCStorageDirection
+"JCStorageItemState state",传输状态，参见 JCStorageState
+"JCStorageReason error",原因值，当文件状态未 JCStorageStateFail 时有效，参见 JCStorageReason
+"int progress;",文件传输进度
+"unsigned int sessId",文件sdk标识
+"unsigned int cookie",文件 cookie

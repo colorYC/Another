@@ -1,0 +1,1 @@
+JCCall,通话类，包含一对一语音和视频通话功能JCJCCallItem,通话对象类，此类主要记录通话的一些状态，UI 可以根据其中的状态进行显示逻辑JCCallCallback,通话回调接口JCMediaDevice,设备模块，主要用于视频、音频设备的管理JCMediaDeviceVideoCanvas,视频对象，主要用于 UI 层视图显示、渲染的控制

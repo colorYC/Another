@@ -1,0 +1,18 @@
+属性,说明
+String messageId,消息唯一标识
+String messageType,消息内容类型
+String text,消息内容，包括文本和自定义消息体内容
+String fileUri,文件链接，可以通过 JCStorage 将文件上传至 Juphoon Cloud 平台来获取该地址，也可以从其他文件消息获取改地址
+String thumbPath,缩略图路径，图片，视频消息有效
+int fileSize,文件大小(字节)
+int duration,文件时长，语音，视频消息有效
+"Map<String, String> extraParams",自定义参数集
+String userId,消息对端用户标识
+String displayName,消息对端昵称
+String groupId,返回群id，群组标识，type 为 Group 时有效
+long time,发送或者接收时间，单位毫秒
+long sentTime,发送成功时间，单位毫秒，如果是收到消息则是服务器记录的该消息发送时间
+@JCMessageChannel.ItemDirection int direction,"消息发送还是接收,see com.juphoon.cloud.JCMessageChannel.ItemDirection"
+@JCMessageChannel.Type int type,一对一消息还是群组消息，参见 Type
+@JCMessageChannel.ItemState int state,"消息状态,see com.juphoon.cloud.JCMessageChannel.ItemState"
+@JCMediaChannel.MediaChannelReason int reason,消息错误，当消息状态为 STATE_SENDFAIL 时有效

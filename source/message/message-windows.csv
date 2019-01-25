@@ -1,0 +1,18 @@
+属性,说明
+string messageId,消息ID
+string messageType,消息类型
+string text,消息内容，包括文本和自定义消息体内容
+string fileUri,文件链接，可以通过 JCStorage 将文件上传至 Juphoon Cloud 平台来获取该地址，也可以从其他文件消息获取改地址
+string thumbPath,缩略图路径，图片，视频消息有效
+int fileSize,文件大小
+int duration,文件时长，语音，视频消息有效
+"Dictionary<string, string> extraParams",自定义参数集
+string userId,消息对端用户标识
+string displayName,消息对端昵称
+string groupId,用户组ID
+long time,发送接收总时长
+long sentTime,发送成功时间，单位毫秒，如果是收到消息则是服务器记录的该消息发送时间
+JCMessageChannelItemDirection direction,"消息发送还是接收,see com.juphoon.cloud.JCMessageChannel.ItemDirection"
+JCMessageChannelType type, 消息发送类型
+JCMessageChannelItemState state,"消息状态,see com.juphoon.cloud.JCMessageChannel.ItemState"
+JCMessageChannelReason error, 错误原因

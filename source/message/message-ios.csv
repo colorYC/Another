@@ -1,0 +1,18 @@
+属性,说明
+"NSString* messageId",消息唯一标识
+"NSString* messageType",消息内容类型
+"NSString* text",消息内容，包括文本和自定义消息体内容
+"NSString* fileUri",文件链接，可以通过 JCStorage 将文件上传至Juphoon Cloud 平台来获取该地址，也可以从其他文件消息获取改地址
+"NSString* thumbPath",缩略图路径，图片，视频消息有效
+"int fileSize",文件大小
+"int duration","文件时长,语音，视频消息有效"
+"NSDictionary* extraParams",自定义参数集
+"NSString* userId",消息对端用户标识
+"NSString* displayName",消息对端昵称
+"NSString* groupId",群组标识，mType 为 JCIMTypeGroup 时有效
+"long time",发送或者接收时间，单位毫秒
+"long sentTime",发送成功时间，单位毫秒，如果是收到消息则是服务器记录的该消息发送时间
+"JCMessageChannelItemDirection direction",消息发送还是接收，参见 JCIMDirection
+"JCMessageChannelType type",一对一消息还是群组消息，参见 JCMessageChannelType
+"JCMessageChannelItemState state",消息状态，参见 JCMessageChannelItemState
+"JCMessageChannelReason error",消息错误，当消息状态为 JCMessageChannelStateSendFail 是有效，参见 JCMessageChannelReason
