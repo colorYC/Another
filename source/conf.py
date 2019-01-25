@@ -121,52 +121,128 @@ htmlhelp_basename = 'CloudDocdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
+#latex_elements = {
+#    # The paper size ('letterpaper' or 'a4paper').
+#    #
+#    # 'papersize': 'letterpaper',
+#
+#    # The font size ('10pt', '11pt' or '12pt').
+#    #
+#    # 'pointsize': '10pt',
+#
+#    # Additional stuff for the LaTeX preamble.
+#    #
+#    # 'preamble': '',
+#
+#    # Latex figure (float) alignment
+#    #
+#    # 'figure_align': 'htbp',
+## The paper size ('letterpaper' or 'a4paper').
+#'papersize': 'a4paper',
+#
+## The font size ('10pt', '11pt' or '12pt').
+##'pointsize': '12pt',
+#
+#'classoptions': ',english',
+#'inputenc': '',
+#'utf8extra': '',
+#
+## Additional stuff for the LaTeX preamble.
+#'preamble': '''
+#    \usepackage{xeCJK}
+#    \usepackage{indentfirst}
+#    \setlength{\parindent}{2em}
+#    \setCJKmainfont[BoldFont=SimHei, ItalicFont=STKaiti]{SimSun}
+#    \setCJKmonofont[Scale=0.9]{Consolas}
+#    \setCJKfamilyfont{song}[BoldFont=SimSun]{SimSun}
+#    \setCJKfamilyfont{sf}[BoldFont=SimSun]{SimSun}
+#    '''
+#}
+#
+## Grouping the document tree into LaTeX files. List of tuples
+## (source start file, target name, title,
+##  author, documentclass [howto, manual, or own class]).
+#latex_documents = [
+#    (master_doc, 'CloudDoc.tex', u'CloudDoc Documentation',
+#     u'colorY', 'manual'),
+#]
 
-    # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
+import os
 
-    # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
+if on_rtd:
+    latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
-'papersize': 'a4paper',
+#'papersize': 'letterpaper',
 
 # The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '12pt',
-
-'classoptions': ',english',
-'inputenc': '',
-'utf8extra': '',
+#'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
-'preamble': '''
-    \usepackage{xeCJK}
-    \usepackage{indentfirst}
-    \setlength{\parindent}{2em}
-    \setCJKmainfont[BoldFont=SimHei, ItalicFont=STKaiti]{SimSun}
-    \setCJKmonofont[Scale=0.9]{Consolas}
-    \setCJKfamilyfont{song}[BoldFont=SimSun]{SimSun}
-    \setCJKfamilyfont{sf}[BoldFont=SimSun]{SimSun}
+#latex_preamble = '\usepackage{tex-live-zh-cn}'
+
+'papersize': 'a4paper',
+'preamble': r'''
+    \hypersetup{unicode=true}
+    \usepackage{CJKutf8}
+    \DeclareUnicodeCharacter{00A0}{\\nobreakspace}
+    \DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+    \DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+    \DeclareUnicodeCharacter{2713}{x}
+    \DeclareUnicodeCharacter{27FA}{\ensuremath{\Longleftrightarrow}}
+    \DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{}}}
+    \DeclareUnicodeCharacter{221B}{\ensuremath{\sqrt[3]{}}}
+    \DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
+    \DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
+    \usepackage[UTF8, scheme = plain]{ctex}
+    \\begin{CJK}{UTF8}{gbsn}
+    \AtEndDocument{\end{CJK}}
     '''
+    }
+else:
+    latex_elements = {
+    # 'papersize' : 'a4paper',
+    # 'utf8extra' : '',
+    # 'inputenc'  : '',
+    # 'babel'     : r'''\usepackage[tex-live-zh-cn]{babel}''',
+    # 'preamble' : r'''
+    # \usepackage{ctex}
+    # ''',
+    'papersize': 'a4paper',
+    'preamble': r'''
+        \hypersetup{unicode=true}
+        \usepackage{CJKutf8}
+        \DeclareUnicodeCharacter{00A0}{\nobreakspace}
+        \DeclareUnicodeCharacter{2203}{\ensuremath{\exists}}
+        \DeclareUnicodeCharacter{2200}{\ensuremath{\forall}}
+        \DeclareUnicodeCharacter{2286}{\ensuremath{\subseteq}}
+        \DeclareUnicodeCharacter{2713}{x}
+        \DeclareUnicodeCharacter{27FA}{\ensuremath{\Longleftrightarrow}}
+        \DeclareUnicodeCharacter{221A}{\ensuremath{\sqrt{}}}
+        \DeclareUnicodeCharacter{221B}{\ensuremath{\sqrt[3]{}}}
+        \DeclareUnicodeCharacter{2295}{\ensuremath{\oplus}}
+        \DeclareUnicodeCharacter{2297}{\ensuremath{\otimes}}
+        \begin{CJK}{UTF8}{gbsn}
+        \AtEndDocument{\end{CJK}}
+        
+        ''',
 }
+
+#f = open('latex-styling.tex', 'r+');
+#PREAMBLE = f.read();
+
+parsedliteralwraps = True
+
+latex_additional_files = ['latexmkjarc']
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'CloudDoc.tex', u'CloudDoc Documentation',
-     u'colorY', 'manual'),
-]
-
+                   (master_doc, 'SDK.tex', u'菊风云通讯平台 Documentation',
+                    u'菊风', 'manual'),
+                   ]
 
 # -- Options for manual page output ---------------------------------------
 
